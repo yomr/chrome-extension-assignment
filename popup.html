@@ -1,0 +1,77 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>Getting Started Extension's Popup</title>
+    <style>
+      body {
+        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+        font-size: 100%;
+      }
+      .main-body {
+        /* avoid an excessively wide status text */
+        white-space: pre;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 400px;
+      }
+
+      #os-list {
+        width: 70%;
+      }
+
+      #browser-list {
+        width: 70%;
+      }
+      
+      input {border:1px solid black;margin-bottom:.5em;}
+      input.error {border:1px solid red;}
+      label.error {background:url('images/unchecked.gif') no-repeat;padding-left:16px;margin-left:.3em;}
+      label.valid {background:url('images/checked.gif') no-repeat;display:block;width:16px;height:16px;}
+
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/popup.js"></script>
+  </head>
+  <body>
+    <div class="main-body">
+      <h2>Browserstack Quicklaunch</h2>
+      <h6 id="invalid-error" style="color: red; display: none"> The selections are invalid. Please choose correct options</h6>      
+      <h6 id="loading" style="color: red;"> Loading devices...</h6>
+    
+      <label for="device-type">Select device</label>
+      <select id="device-type" disabled>
+        <option selected disabled hidden>Select Device Type</option>
+      </select>
+
+      <label for="os-list">Select OS</label>
+      <select id="os-list" disabled>
+        <option selected disabled hidden>Select Device Type first</option>
+      </select>
+
+      <label for="browser-list">Select browser/mobile</label>
+      <select id="browser-list" disabled>
+        <option selected disabled hidden>Select OS first</option>
+      </select>
+      
+      <label for="url">Enter URL</label>
+      <input id="url" name="url" placeholder="Enter URL" disabled><h6 id="invalid-url" style="color: red; display: none"> Invalid URL</h6> 
+      <input id="submit" type="submit" disabled></input>
+    
+    </div>
+
+  </body>
+</html>
+
